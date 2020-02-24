@@ -145,9 +145,9 @@ def generatePipelineMsg(data):
     source = data['object_attributes']['source']
     status = data['object_attributes']['status']
     duration = data['object_attributes']['duration']
-    builds = ''
+    builds = '\n'
     for build in data['builds']:
-        bmsg='{0} at {1} is {2}.\n'.format(build['name'],build['stage'],build['status'])
+        bmsg='\t{0} at {1} is {2}.\n'.format(build['name'],build['stage'],build['status'])
         builds = builds + bmsg
     msg = '*{0} ({1}) - new pipeline event*\n source: {2}\n status: {3}\n duration: {4} s\n builds: {5}\n'\
         .format(repo, branch, source, status, duration, builds)        
