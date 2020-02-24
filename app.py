@@ -140,13 +140,22 @@ def generateWikiMsg(data):
 
 
 def generatePipelineMsg(data): 
-    return 'new pipeline stuff'
+    repo = data['project']['name']
+    branch = data['object_attributes']['ref']
+    source = data['object_attributes']['source']
+    status = data['object_attributes']['status']
+    duration = data['object_attributes']['duration']
+    builds = ''
+    for build in data['builds']:
+        bmsg='{0} at {1} is {2}.\n'.format(build['name'],build['stage'],build['status'])
+        builds = builds + bmsg
+    msg = '*{0} ({1}) - new pipeline event*\n source: {2}\n status: {3}\n duration: {4} s\n builds: {5}\n'\
+        .format(repo, branch, source, status, duration, builds)        
+    return msg
 
 
 def generateBuildMsg(data):
-    msg = '*{0} -New build event* \n build name: {1}\n build status: {2}\n build duration: {3}\n'\
-        .format(data['repository']['name'],data['build_name'],data['build_status'],data['build_duration'])
-    return msg
+    return 'new build stuff'
 
 
 if __name__ == "__main__":
