@@ -139,11 +139,13 @@ def generateWikiMsg(data):
     return 'new wiki stuff'
 
 
-def generatePipelineMsg(data):
+def generatePipelineMsg(data): 
     return 'new pipeline stuff'
 
 
 def generateBuildMsg(data):
+    msg = '*{0} -New build event* \n build name: {1}\n build status: {2}\n build duration: {3}\n'\
+        .format(data['repository']['name'],data['build_name'],data['build_status'],data['build_duration']);
     return 'new build stuff'
 
 
