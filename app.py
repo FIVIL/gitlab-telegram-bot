@@ -145,8 +145,8 @@ def generatePipelineMsg(data):
 
 def generateBuildMsg(data):
     msg = '*{0} -New build event* \n build name: {1}\n build status: {2}\n build duration: {3}\n'\
-        .format(data['repository']['name'],data['build_name'],data['build_status'],data['build_duration']);
-    return 'new build stuff'
+        .format(data['repository']['name'],data['build_name'],data['build_status'],data['build_duration'])
+    return msg
 
 
 if __name__ == "__main__":
